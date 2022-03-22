@@ -15,6 +15,11 @@ type sendMessageRequest struct {
 }
 
 func StartWebserver() {
+	//Disable GIN debug mode
+	if !env.DebugMode {
+		gin.SetMode(gin.ReleaseMode)
+	}
+
 	r := gin.New()
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
@@ -48,6 +53,8 @@ func StartWebserver() {
 		Addr:    env.WebserverHost + ":" + env.WebserverPort,
 	}
 
-	fmt.Println("[Webserver] Starting server on port " + env.WebserverPort)
+	if env.DebugMode {
+		fmt.Println("[Webserver] Starting server on port " + env.WebserverPort)
+	}
 	server.ListenAndServe()
 }

@@ -27,12 +27,8 @@ func ConnectBot() {
 		panic(err)
 	}
 
-	fmt.Println("[Matrix] Logged in!")
-	MatrixClient.SendText(id.RoomID(env.RoomId), "Logged in!")
-
-	err = MatrixClient.Sync()
-	if err != nil {
-		panic(err)
+	if env.DebugMode {
+		fmt.Println("[Matrix] Logged in!")
+		MatrixClient.SendText(id.RoomID(env.RoomId), "Logged in!")
 	}
-
 }

@@ -14,6 +14,7 @@ var RoomId string
 
 var WebserverHost string
 var WebserverPort string
+var DebugMode bool
 
 func LoadEnv() {
 	// Load env variables
@@ -27,6 +28,7 @@ func LoadEnv() {
 
 	WebserverHost = getenv("WEBSERVER_HOST", "localhost")
 	WebserverPort = getenv("WEBSERVER_PORT", "8080")
+	DebugMode = stringBool(getenv("DEBUG_MODE", "TRUE"))
 }
 
 func getenv(key, fallback string) string {
@@ -37,4 +39,12 @@ func getenv(key, fallback string) string {
 		return fallback
 	}
 	return value
+}
+
+func stringBool(in string) bool {
+	if in == "true" || in == "TRUE" {
+		return true
+	} else {
+		return false
+	}
 }

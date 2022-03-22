@@ -5,7 +5,7 @@ import (
 	"matrixhook/env"
 
 	"maunium.net/go/mautrix"
-	"maunium.net/go/mautrix/event"
+	"maunium.net/go/mautrix/id"
 )
 
 var MatrixClient *mautrix.Client
@@ -26,12 +26,8 @@ func ConnectBot() {
 		panic(err)
 	}
 
-	fmt.Println("Logged in!")
-
-	syncer := MatrixClient.Syncer.(*mautrix.DefaultSyncer)
-	syncer.OnEventType(event.EventMessage, func(source mautrix.EventSource, evt *event.Event) {
-		fmt.Printf("<%[1]s> %[4]s (%[2]s/%[3]s)\n", evt.Sender, evt.Type.String(), evt.ID, evt.Content.AsMessage().Body)
-	})
+	fmt.Println("[Matrix] Logged in!")
+	MatrixClient.SendText(id.RoomID(env.RoomId), "Logged in!")
 
 	err = MatrixClient.Sync()
 	if err != nil {

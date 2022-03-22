@@ -10,6 +10,11 @@ var Homeserver string
 var Username string
 var Password string
 
+var RoomId string
+
+var WebserverHost string
+var WebserverPort string
+
 func LoadEnv() {
 	// Load env variables
 	godotenv.Load(".env")
@@ -18,6 +23,10 @@ func LoadEnv() {
 	Username = getenv("MATRIX_USERNAME", "")
 	Password = getenv("MATRIX_PASSWORD", "")
 
+	RoomId = getenv("MATRIX_ROOM_ID", "")
+
+	WebserverHost = getenv("WEBSERVER_HOST", "localhost")
+	WebserverPort = getenv("WEBSERVER_PORT", "8080")
 }
 
 func getenv(key, fallback string) string {

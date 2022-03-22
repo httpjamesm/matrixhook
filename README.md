@@ -10,7 +10,7 @@ A simple and fast Matrix webhook bot made in Golang.
 
 ## Usage
 
-Send a POST request to the webserver with the following JSON formatted body:
+Send a POST request to the webserver (`/send`) with the following JSON formatted body:
 
 ```json
 {

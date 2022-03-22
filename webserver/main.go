@@ -25,11 +25,11 @@ func StartWebserver() {
 	r.Use(gin.Recovery())
 	r.Use(CheckPresharedKey())
 
-	r.GET("/", func(c *gin.Context) {
-		c.String(200, "Hello World!")
+	r.GET("/ping", func(c *gin.Context) {
+		c.String(200, "Pong!")
 	})
 
-	r.POST("/", func(c *gin.Context) {
+	r.POST("/send", func(c *gin.Context) {
 		// get body of request as text
 		var json sendMessageRequest
 		if err := c.ShouldBindJSON(&json); err != nil {

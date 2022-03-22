@@ -16,6 +16,8 @@ var WebserverHost string
 var WebserverPort string
 var DebugMode bool
 
+var PresharedKey string
+
 func LoadEnv() {
 	// Load env variables
 	godotenv.Load(".env")
@@ -23,12 +25,11 @@ func LoadEnv() {
 	Homeserver = getenv("MATRIX_HOMESERVER", "https://matrix.org")
 	Username = getenv("MATRIX_USERNAME", "")
 	Password = getenv("MATRIX_PASSWORD", "")
-
 	RoomId = getenv("MATRIX_ROOM_ID", "")
-
 	WebserverHost = getenv("WEBSERVER_HOST", "localhost")
 	WebserverPort = getenv("WEBSERVER_PORT", "8080")
 	DebugMode = stringBool(getenv("DEBUG_MODE", "TRUE"))
+	PresharedKey = getenv("WEBSERVER_PRESHARED_KEY", "none")
 }
 
 func getenv(key, fallback string) string {

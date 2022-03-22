@@ -18,6 +18,7 @@ func StartWebserver() {
 	r := gin.New()
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
+	r.Use(CheckPresharedKey())
 
 	r.GET("/", func(c *gin.Context) {
 		c.String(200, "Hello World!")

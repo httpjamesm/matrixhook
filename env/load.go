@@ -15,6 +15,8 @@ var RoomId string
 var WebserverHost string
 var WebserverPort string
 
+var PresharedKey string
+
 func LoadEnv() {
 	// Load env variables
 	godotenv.Load(".env")
@@ -27,6 +29,8 @@ func LoadEnv() {
 
 	WebserverHost = getenv("WEBSERVER_HOST", "localhost")
 	WebserverPort = getenv("WEBSERVER_PORT", "8080")
+
+	PresharedKey = getenv("WEBSERVER_PRESHARED_KEY", "none")
 }
 
 func getenv(key, fallback string) string {

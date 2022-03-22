@@ -5,7 +5,6 @@ import (
 	"matrixhook/env"
 
 	"maunium.net/go/mautrix"
-	"maunium.net/go/mautrix/id"
 )
 
 var MatrixClient *mautrix.Client
@@ -29,6 +28,5 @@ func ConnectBot() {
 
 	if env.DebugMode {
 		fmt.Println("[Matrix] Logged in!")
-		MatrixClient.SendText(id.RoomID(env.RoomId), "Logged in!")
 	}
 }

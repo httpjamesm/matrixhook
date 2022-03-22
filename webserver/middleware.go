@@ -11,6 +11,7 @@ func CheckPresharedKey() gin.HandlerFunc {
 		// check if env preshared key is set to "none"
 		if env.PresharedKey == "none" {
 			c.Next()
+			return
 		}
 
 		// check authorization header for preshared key

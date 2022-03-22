@@ -14,9 +14,9 @@ func LoadEnv() {
 	// Load env variables
 	godotenv.Load(".env")
 
-	Homeserver = getenv("HOMESERVER", "https://matrix.org")
-	Username = getenv("USERNAME", "")
-	Password = getenv("PASSWORD", "")
+	Homeserver = getenv("MATRIX_HOMESERVER", "https://matrix.org")
+	Username = getenv("MATRIX_USERNAME", "")
+	Password = getenv("MATRIX_PASSWORD", "")
 
 }
 

@@ -11,7 +11,8 @@ import (
 var MatrixClient *mautrix.Client
 
 func ConnectBot() {
-	MatrixClient, err := mautrix.NewClient(env.Homeserver, "", "")
+	var err error
+	MatrixClient, err = mautrix.NewClient(env.Homeserver, "", "")
 	if err != nil {
 		panic(err)
 	}

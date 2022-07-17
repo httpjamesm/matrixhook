@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  matrixhook:
+    container_name: matrixhook
+    network_mode: host
+    build: 
+      context: .
+      args:
+        - MATRIX_HOMESERVER=https://matrix.org
+        - MATRIX_USERNAME=username
+        - MATRIX_PASSWORD=password
+        - MATRIX_ROOM_ID=!xxx
+        - WEBSERVER_PRESHARED_KEY=none
+      network: host
+    ports:
+      - "8080:8080"
+    restart: always

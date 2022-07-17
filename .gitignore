@@ -1,2 +1,4 @@
 .env
 *_bin
+
+docker-compose.yml

@@ -2,3 +2,5 @@
 *_bin
 
 docker-compose.yml
+
+*.tar
